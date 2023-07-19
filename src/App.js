@@ -5,6 +5,7 @@ import {
   Button,
   Container,
   Divider,
+  Grid,
   Link,
   Toolbar,
   Typography,
@@ -12,13 +13,15 @@ import {
 import {
   AlternateEmail,
   ArrowBackIos,
+  BarChart,
   Brightness4,
   Brightness7,
+  Collections,
+  Equalizer,
   Facebook,
   Home,
   Instagram,
   MenuOpen,
-  Toc,
   Twitter,
 } from "@mui/icons-material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -31,7 +34,6 @@ import _ from "lodash";
 import { useLocation } from "react-router-dom";
 
 const App = () => {
-
   // Store mode in localstorage
   const [mode, setmode] = useState(
     localStorage.getItem("mode") === null
@@ -71,9 +73,14 @@ const App = () => {
       icon: <Home />,
     },
     {
+      name: "Skills",
+      to: "#skills",
+      icon: <BarChart />,
+    },
+    {
       name: "Portfolio",
       to: "#portfolio",
-      icon: <Toc />,
+      icon: <Collections />,
     },
     {
       name: "Contact",
@@ -147,7 +154,7 @@ const App = () => {
   // Use to Scroll to Section in The Page
   const location = useLocation();
 
-  // Use to Change Menu Icon From Width 800 px 
+  // Use to Change Menu Icon From Width 800 px
   const [changeIcon, setchangeIcon] = useState(false);
 
   // Use to Print The Current Year
@@ -155,13 +162,32 @@ const App = () => {
 
   //Scroll to Top
   window.onscroll = () => {
-    const toTop = document.querySelector('.toTop')
-    if(window.scrollY === 0 ){
-      toTop.style.transform = 'translateY(200%)'
-    } else if(window.scrollY > 200) {
-      toTop.style.transform = 'translate(0)'
+    const toTop = document.querySelector(".toTop");
+    const skills = document.querySelector(".skillNumber");
+    const portfolio = document.querySelector(".portfolioNumber");
+
+    if (window.scrollY === 0) {
+      toTop.style.transform = "translateY(200%)";
+    } else if (window.scrollY > 200) {
+      toTop.style.transform = "translate(0)";
     }
-  }
+
+    if (window.scrollY + 600 > skills.offsetTop) {
+      skills.style.transform = "translateX(0)";
+      skills.style.opacity = "1";
+    } else {
+      skills.style.transform = "translateX(-50%)";
+      skills.style.opacity = "0";
+    }
+
+    if (window.scrollY + 600 > portfolio.offsetTop) {
+      portfolio.style.transform = "translateX(0)";
+      portfolio.style.opacity = "1";
+    } else {
+      portfolio.style.transform = "translateX(50%)";
+      portfolio.style.opacity = "0";
+    }
+  };
 
   return (
     // For The Theme Get Full All Sections in The Page
@@ -176,7 +202,7 @@ const App = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              gap: "20px",
+              gap: "10px",
             }}
           >
             <Button
@@ -243,7 +269,6 @@ const App = () => {
                     variant="outlined"
                     sx={{
                       border: "1px solid transparent",
-                      borderRadius: "0",
                       bgcolor: location.hash === e.to ? "white" : null,
                       color: location.hash === e.to ? "black" : "white",
                       "&:hover": {
@@ -360,6 +385,137 @@ const App = () => {
               Front-End DEV ,
             </span>
           </Typography>
+          <Grid
+            sx={{
+              position: "absolute",
+              bottom: "50px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+            component={Link}
+            href="#skills"
+          >
+            <Button
+              variant="contained"
+              size="large"
+              sx={{
+                color: "white",
+                opacity: "0.5",
+              }}
+            >
+              Scroll
+            </Button>
+            <ArrowBackIos className="scrollingOne" />
+            <ArrowBackIos className="scrollingTwo" />
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* The Skills Section */}
+      <Box
+        id="skills"
+        sx={{
+          minHeight: "100vh",
+          bgcolor: "secondary.main",
+          padding: "30px 20px",
+        }}
+      >
+        <Toolbar />
+        <Typography
+          className="skills"
+          mb={2}
+          variant="h3"
+          textAlign="center"
+          color="white"
+          sx={{
+            overflow: "hidden",
+          }}
+        >
+          S K I L L S
+        </Typography>
+        <Divider
+          sx={{
+            bgcolor: "white",
+            opacity: "0.4",
+          }}
+        />
+        <Container
+          className="skillNumber"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "40px",
+            gap: "20px",
+            transform: "translateX(-50%)",
+            opacity: "0",
+          }}
+        >
+          <Typography
+            className="skillOne"
+            variant="h4"
+            sx={{
+              bgcolor: "#FF4F00",
+              color: "white",
+              padding: "20px",
+              borderRadius: "100px",
+            }}
+          >
+            HTML
+          </Typography>
+          <Typography
+            className="skillTwo"
+            variant="h4"
+            sx={{
+              bgcolor: "#FFB800",
+              color: "white",
+              padding: "20px",
+              borderRadius: "100px",
+            }}
+          >
+            CSS
+          </Typography>
+          <Typography
+            className="skillThree"
+            variant="h4"
+            sx={{
+              bgcolor: "#7F00FF",
+              color: "white",
+              padding: "20px",
+              borderRadius: "100px",
+            }}
+          >
+            JavaScript
+          </Typography>
+          <Typography
+            className="skillFour"
+            variant="h4"
+            sx={{
+              bgcolor: "#00D2FF",
+              color: "white",
+              padding: "20px",
+              borderRadius: "100px",
+            }}
+          >
+            React
+          </Typography>
+          <Typography
+            className="skillFive"
+            variant="h4"
+            textAlign="center"
+            sx={{
+              bgcolor: "primary.main",
+              color: "white",
+              padding: "20px",
+              borderRadius: "100px",
+            }}
+          >
+            Still Learning More!
+          </Typography>
         </Container>
       </Box>
 
@@ -369,6 +525,7 @@ const App = () => {
         sx={{
           padding: "30px 20px",
           bgcolor: "primary.main",
+          overflow: "hidden",
         }}
       >
         <Toolbar />
@@ -387,66 +544,66 @@ const App = () => {
             opacity: "0.4",
           }}
         />
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          gap: "50px",
-          flexWrap: "wrap",
-          bgcolor: "primary.main",
-          alignItems: "center",
-          padding: "40px ",
-        }}
-      >
-
-        {/* Use Lodash to Shuffle The Objects in Portfolio List */}
-        {_.shuffle(portfolioList).map((e, k) => {
-          return (
-            <Container
-              key={k}
-              className={e.eff}
-              sx={{
-                height: "350px",
-                width: "350px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                gap: "20px",
-                borderRadius: "50px 50px",
-                boxShadow: "inset 0px 0px 20px ",
-                textShadow: "0 0 10px black",
-              }}
-            >
-              <Typography variant="h5" color="white">
-                {e.name}
-              </Typography>
-              <img
-                src={e.pic}
-                alt="Portfolio Pics"
-                height="200px"
-                width="200px"
-              />
-              <Link href={e.to} target="_blank">
-                <Button
-                  variant="contained"
-                  sx={{
-                    color: "white",
-                    transition: "0.1s",
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                    },
-                  }}
-                  className={e.eff}
-                >
-                  Preview Live
-                </Button>
-              </Link>
-            </Container>
-          );
-        })}
+        <Box
+          className="portfolioNumber"
+          sx={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            gap: "50px",
+            flexWrap: "wrap",
+            alignItems: "center",
+            padding: "40px ",
+            transform: "translateX(50%)",
+            opacity: "0",
+          }}
+        >
+          {/* Use Lodash to Shuffle The Objects in Portfolio List */}
+          {_.shuffle(portfolioList).map((e, k) => {
+            return (
+              <Container
+                key={k}
+                className={e.eff}
+                sx={{
+                  height: "350px",
+                  width: "350px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  gap: "20px",
+                  borderRadius: "50px 50px",
+                  boxShadow: "inset 0px 0px 20px ",
+                  textShadow: "0 0 10px black",
+                }}
+              >
+                <Typography variant="h5" color="white">
+                  {e.name}
+                </Typography>
+                <img
+                  src={e.pic}
+                  alt="Portfolio Pics"
+                  height="200px"
+                  width="200px"
+                />
+                <Link href={e.to} target="_blank">
+                  <Button
+                    variant="contained"
+                    sx={{
+                      color: "white",
+                      transition: "0.1s",
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                      },
+                    }}
+                    className={e.eff}
+                  >
+                    Preview Live
+                  </Button>
+                </Link>
+              </Container>
+            );
+          })}
+        </Box>
       </Box>
 
       {/* The Contact Section and Social Links */}
@@ -488,15 +645,21 @@ const App = () => {
         Jaden Yoky © {year}
       </Typography>
 
-      <Button variant="contained" color="secondary" className="toTop" onClick={()=>{
-          document.documentElement.scrollTop = 0 
-        }}>
-          <ArrowBackIos sx={{
-            transform: 'rotate(90deg)',
-            fontSize: '30px'
-          }} />
+      <Button
+        variant="contained"
+        color="secondary"
+        className="toTop"
+        onClick={() => {
+          document.documentElement.scrollTop = 0;
+        }}
+      >
+        <ArrowBackIos
+          sx={{
+            transform: "rotate(90deg)",
+            fontSize: "30px",
+          }}
+        />
       </Button>
-
     </ThemeProvider>
     // Here It's End Of The Page .. See You Later , Gone Away ..
   );

@@ -18,6 +18,64 @@ code {
   scroll-behavior: smooth;
 }
 
+.scrollingOne {
+  transform: rotate(-90deg);
+  animation: one 2s infinite;
+  color: white;
+} .scrollingTwo {
+  transform: rotate(-90deg);
+  animation: two 2s infinite ;
+  color: white;
+}
+
+@keyframes one {
+  0% , 100% {
+    opacity: 0.7;
+  } 50% {
+    opacity: 0.1;
+    transform: rotate(-90deg) translateX(-50%);
+  }
+}
+
+@keyframes two {
+  0% , 100% {
+    opacity: 0.1;
+  } 50% {
+    opacity: 0.7;
+    transform: rotate(-90deg) translateX(-50%);  
+  }
+}
+
+.skillNumber {
+  transition: 1s;
+}
+
+.portfolioNumber {
+  transition: 1s;
+}
+
+.skillOne {
+  animation: lll 7s infinite;
+  opacity: 0.5;
+} .skillTwo {
+  animation: lll 7s infinite 1s;
+  opacity: 0.5;
+} .skillThree {
+  animation: lll 7s infinite 2s;
+  opacity: 0.5;
+} .skillFour {
+  animation: lll 7s infinite 3s;
+  opacity: 0.5;
+} .skillFive {
+  animation: lll 7s infinite 4s;
+  opacity: 0.5;
+} @keyframes lll {
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 50px currentColor ;
+  }
+}
+
 .quran {
   background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,151,255,1) 89%);
   text-shadow: 0 0 10px black;
@@ -63,6 +121,7 @@ background: linear-gradient(90deg, rgba(255,176,85,1) 27%, rgba(255,255,255,1) 9
   transition: 0.3s !important;
   cursor: pointer !important;
   border-radius: 50px !important;
+  transform: translateX(200%);
 }
 
 ::-webkit-scrollbar {
@@ -71,7 +130,7 @@ background: linear-gradient(90deg, rgba(255,176,85,1) 27%, rgba(255,255,255,1) 9
   background-color: white;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .menuButton {
     display: flex !important;
   } .navLink {
@@ -79,13 +138,11 @@ background: linear-gradient(90deg, rgba(255,176,85,1) 27%, rgba(255,255,255,1) 9
   } .menuHidden {
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
-    gap: 20px;    
-    left: 0;
+    padding-top: 150px;
     position: fixed;
-    bottom: 0 ;
-    height: calc(100vh - 50px);
+    height: 100vh;
     width: 300px;
+    gap: 20px;
     transform: translate(-100%);
     transition: 0.5s;
     background-color: #272727;
@@ -102,8 +159,8 @@ background: linear-gradient(90deg, rgba(255,176,85,1) 27%, rgba(255,255,255,1) 9
     z-index: 2;
     transform: translate(0);
     transition: 0.5s;
-    animation: sss 0.5s;
-  } @keyframes sss {
+    animation: showToTop 0.5s;
+  } @keyframes showToTop {
     0% {
       transform: translate(-100%);
     } 100% {
@@ -117,7 +174,7 @@ background: linear-gradient(90deg, rgba(255,176,85,1) 27%, rgba(255,255,255,1) 9
 }
 
 @media (max-width: 420px) {
-  .portfolio {
+  .portfolio , .skills {
     font-size: 2rem !important;
   }
 }
