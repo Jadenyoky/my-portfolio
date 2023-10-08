@@ -17,7 +17,6 @@ import {
   Brightness4,
   Brightness7,
   Collections,
-  Equalizer,
   Facebook,
   Home,
   Instagram,
@@ -27,9 +26,10 @@ import {
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Quran from "./Images/quran.png";
-import Poke from "./Images/pokemon.png";
+// import Poke from "./Images/pokemon.png";
 import Yugi from "./Images/yugi.png";
 import todo from "./Images/todolist.png";
+import QuranApi from "./Images/quranApi.png"
 import _ from "lodash";
 import { useLocation } from "react-router-dom";
 
@@ -97,12 +97,12 @@ const App = () => {
       pic: Quran,
       eff: "quran",
     },
-    {
-      name: "Pokemon Api",
-      to: "https://poke-242.web.app",
-      pic: Poke,
-      eff: "poke",
-    },
+    // {
+    //   name: "Pokemon Api",
+    //   to: "https://poke-242.web.app",
+    //   pic: Poke,
+    //   eff: "poke",
+    // },
     {
       name: "Yugi Api",
       to: "https://yugi-0.web.app",
@@ -114,6 +114,12 @@ const App = () => {
       to: "https://todolist44024.web.app",
       pic: todo,
       eff: "todo",
+    },
+    {
+      name: "Quran ( Api )",
+      to: "https://quran-04.web.app",
+      pic: QuranApi,
+      eff: "quranApi",
     },
   ];
 
@@ -374,7 +380,7 @@ const App = () => {
                 color: "yellow",
               }}
             >
-              I'm Jaden ,
+              I'm Ahmed ,
             </span>
             <br />
             <span
@@ -642,7 +648,7 @@ const App = () => {
         textAlign="center"
         padding={1}
       >
-        Jaden Yoky © {year}
+        Dev. Ahmed © {year}
       </Typography>
 
       <Button

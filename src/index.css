@@ -72,7 +72,7 @@ code {
 } @keyframes lll {
   50% {
     opacity: 1;
-    box-shadow: 0 0 50px currentColor ;
+    
   }
 }
 
@@ -92,7 +92,12 @@ code {
 }
 
 .todo {
-background: linear-gradient(90deg, rgba(255,176,85,1) 27%, rgba(255,255,255,1) 93%);
+  background: linear-gradient(90deg, rgba(255,176,85,1) 27%, rgba(255,255,255,1) 93%);
+  text-shadow: 0 0 10px black;
+}
+
+.quranApi {
+  background: linear-gradient(28deg, rgba(69,131,66,1) 27%, rgba(113,0,173,1) 68%);
   text-shadow: 0 0 10px black;
 }
 
